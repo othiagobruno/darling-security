@@ -244,6 +244,7 @@ _SecTrustEvaluateLeafOnly
 _SecTrustEvaluateWithError
 _SecTrustFlushResponseCache
 _SecTrustGetAssetVersionNumber
+_SecTrustCopyCertificateChain
 _SecTrustGetCertificateAtIndex
 _SecTrustGetCertificateCount
 _SecTrustGetDetails

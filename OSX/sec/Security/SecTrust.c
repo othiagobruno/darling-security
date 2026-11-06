@@ -1897,6 +1897,18 @@ CFIndex SecTrustGetCertificateCount(SecTrustRef trust) {
 	return certCount;
 }
 
+CFArrayRef SecTrustCopyCertificateChain(SecTrustRef trust) {
+    CFIndex count = SecTrustGetCertificateCount(trust);
+    CFMutableArrayRef chain = CFArrayCreateMutable(kCFAllocatorDefault, count, &kCFTypeArrayCallBacks);
+    for (CFIndex ix = 0; chain && ix < count; ix++) {
+        SecCertificateRef cert = SecTrustGetCertificateAtIndex(trust, ix);
+        if (cert) {
+            CFArrayAppendValue(chain, cert);
+        }
+    }
+    return chain;
+}
+
 SecCertificateRef SecTrustGetCertificateAtIndex(SecTrustRef trust,
     CFIndex ix) {
     if (!trust) {
